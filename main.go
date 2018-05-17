@@ -4,7 +4,6 @@ import (
 	"flag"
 	"fmt"
 	"math/rand"
-	"runtime"
 	"strings"
 	"time"
 
@@ -37,8 +36,6 @@ func (opts ListOpts) Shuffle() {
 }
 
 func main() {
-	runtime.GOMAXPROCS(runtime.NumCPU())
-
 	var orms ListOpts
 	flag.IntVar(&benchs.ORM_MAX_IDLE, "max_idle", 200, "max idle conns")
 	flag.IntVar(&benchs.ORM_MAX_CONN, "max_conn", 200, "max open conns")
