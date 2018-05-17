@@ -3,7 +3,7 @@ package benchs
 import (
 	"fmt"
 
-	"github.com/lunny/xorm"
+	"github.com/go-xorm/xorm"
 )
 
 var xo *xorm.Session
@@ -20,7 +20,7 @@ func init() {
 		engine, _ := xorm.NewEngine("mysql", ORM_SOURCE)
 
 		engine.SetMaxIdleConns(ORM_MAX_IDLE)
-		engine.SetMaxConns(ORM_MAX_CONN)
+		engine.SetMaxOpenConns(ORM_MAX_CONN)
 
 		xo = engine.NewSession()
 	}

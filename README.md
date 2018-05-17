@@ -14,8 +14,7 @@ A benchmark to compare the performance of golang orm package.
 
 ### MySQL
 
-* MySQL 5.5.34 for Linux on x86_64
-* MySQL-server-5.5.34-1.rhel5.x86_64.rpm
+* MySQL 5.7.22
 * Config in my.cnf
 
 ### ORMs
@@ -23,15 +22,31 @@ A benchmark to compare the performance of golang orm package.
 All package run in no-cache mode.
 
 * [Beego ORM](http://beego.me/docs/mvc/model/overview.md) latest in branch [develop](https://github.com/astaxie/beego/tree/develop)
-* [xorm](https://github.com/lunny/xorm) latest
+* [xorm](https://github.com/go-xorm/xorm) latest
 * [Hood](https://github.com/eaigner/hood) latest
 * [Qbs](https://github.com/coocood/qbs) latest (Disabled stmt cache / [patch](https://gist.github.com/slene/8297019) / [full](https://gist.github.com/slene/8297565))
 
 ### Run
 
-```go
-go get github.com/beego/orm-benchmark
-orm-benchmark -multi=20 -orm=all
+start mysql
+```bash
+docker-compose up -d
+```
+
+get dependency 
+```bash
+go get -u github.com/astaxie/beego
+go get -u github.com/coocood/qbs
+go get -u github.com/eaigner/hood
+go get -u github.com/go-sql-driver/mysql
+go get -u github.com/go-xorm/xorm
+go get -u github.com/jinzhu/gorm
+```
+
+run benchmark tests
+```bash
+go build
+./orm-benchmark -multi=20 -orm=all
 ```
 
 ### Reports
